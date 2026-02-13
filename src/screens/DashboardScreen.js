@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { getAuth, signOut } from 'firebase/auth';
 import { Menu, CalendarCheck, Settings, LogOut, UtensilsCrossed } from 'lucide-react-native';
 import { theme } from '../theme';
 import Button from '../components/Button';
@@ -28,41 +27,15 @@ const DashboardCard = ({ title, icon, onPress, description, count }) => (
 
 export default function DashboardScreen() {
     const navigation = useNavigation();
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    const handleLogout = () => {
-        Alert.alert(
-            "Logout",
-            "Are you sure you want to logout?",
-            [
-                { text: "Cancel", style: "cancel" },
-                {
-                    text: "Logout",
-                    onPress: async () => {
-                        try {
-                            await signOut(auth);
-                            navigation.replace('Login');
-                        } catch (error) {
-                            console.error("Logout failed: ", error);
-                            Alert.alert("Error", "Failed to logout");
-                        }
-                    }
-                }
-            ]
-        );
-    };
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <View>
-                    <Text style={styles.greeting}>Welcome back,</Text>
-                    <Text style={styles.name}>{user?.email || "Admin"}</Text>
+                    <Text style={styles.greeting}>Welcome,</Text>
+                    <Text style={styles.name}>Admin</Text>
                 </View>
-                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                    <LogOut color={theme.colors.textLight} size={24} />
-                </TouchableOpacity>
+                {/* Logout disabled for no-login mode */}
             </View>
 
             <ScrollView contentContainerStyle={styles.content}>

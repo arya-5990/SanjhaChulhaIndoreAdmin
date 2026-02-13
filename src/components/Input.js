@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, StyleSheet, View, Text } from 'react-native';
 import { theme } from '../theme';
 
-const Input = ({ label, style, error, onFocus, onBlur, ...props }) => {
+const Input = ({ label, style, inputStyle, error, onFocus, onBlur, ...props }) => {
     const [focused, setFocused] = useState(false);
 
     return (
@@ -12,7 +12,8 @@ const Input = ({ label, style, error, onFocus, onBlur, ...props }) => {
                 style={[
                     styles.input,
                     focused ? styles.inputFocused : null,
-                    error ? styles.inputError : null
+                    error ? styles.inputError : null,
+                    inputStyle
                 ]}
                 onFocus={() => {
                     setFocused(true);

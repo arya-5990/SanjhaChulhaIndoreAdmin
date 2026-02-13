@@ -33,13 +33,12 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="Dashboard"
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: '#F8F9FA' },
           }}
         >
-          <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Menu" component={MenuScreen} />
           <Stack.Screen name="Reservations" component={ReservationsScreen} />

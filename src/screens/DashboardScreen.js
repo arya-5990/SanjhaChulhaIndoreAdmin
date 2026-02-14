@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { Menu, CalendarCheck, Settings, LogOut, UtensilsCrossed } from 'lucide-react-native';
+import { Menu, Settings, LogOut, UtensilsCrossed } from 'lucide-react-native';
 import { theme } from '../theme';
 import Button from '../components/Button';
 
@@ -47,15 +47,7 @@ export default function DashboardScreen() {
                         description="Update items & prices"
                         icon={<UtensilsCrossed color="white" size={24} />}
                         onPress={() => navigation.navigate('Menu')}
-                        count={42} // Mock count
-                    />
 
-                    <DashboardCard
-                        title="Reservations"
-                        description="View upcoming bookings"
-                        icon={<CalendarCheck color="white" size={24} />}
-                        onPress={() => navigation.navigate('Reservations')}
-                        count={5} // Mock new bookings
                     />
 
                     <DashboardCard

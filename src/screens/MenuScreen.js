@@ -64,10 +64,13 @@ export default function MenuScreen() {
                 type: 'image/jpeg',
                 name: 'upload.jpg',
             });
-            data.append('upload_preset', 'sanjha_chulha_preset'); // You need to create an unsigned preset in Cloudinary
-            data.append('cloud_name', 'dpvab3v9f');
+            const cloudName = process.env.EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME;
+            const uploadPreset = process.env.EXPO_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
-            const response = await fetch("https://api.cloudinary.com/v1_1/dpvab3v9f/image/upload", {
+            data.append('upload_preset', uploadPreset);
+            data.append('cloud_name', cloudName);
+
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
                 method: "post",
                 body: data
             });

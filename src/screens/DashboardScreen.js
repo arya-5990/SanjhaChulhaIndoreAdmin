@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { Menu, Settings, LogOut, UtensilsCrossed, Users } from 'lucide-react-native';
+import { Menu, Settings, LogOut, UtensilsCrossed, Users, FileText } from 'lucide-react-native';
 import { theme } from '../theme';
 import Button from '../components/Button';
 
@@ -63,10 +63,10 @@ export default function DashboardScreen() {
                     />
 
                     <DashboardCard
-                        title="Settings"
-                        description="App configuration"
-                        icon={<Settings color="white" size={24} />}
-                        onPress={() => Alert.alert("Settings", "Change theme, password, etc.")}
+                        title="Basic Details"
+                        description="Restaurant info"
+                        icon={<FileText color="white" size={24} />}
+                        onPress={() => navigation.navigate('BasicDetails')}
                     />
                 </View>
             </ScrollView>

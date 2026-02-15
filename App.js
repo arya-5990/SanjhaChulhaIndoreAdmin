@@ -10,6 +10,7 @@ import './src/config/firebase'; // Initialize Firebase
 import LoginScreen from './src/screens/LoginScreen.js';
 import DashboardScreen from './src/screens/DashboardScreen.js';
 import MenuScreen from './src/screens/MenuScreen.js';
+import StaffScreen from './src/screens/StaffScreen.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ export default function App() {
         >
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Menu" component={MenuScreen} />
+          <Stack.Screen name="Staff" component={StaffScreen} />
 
         </Stack.Navigator>
       </NavigationContainer>

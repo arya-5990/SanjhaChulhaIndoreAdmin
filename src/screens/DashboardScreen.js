@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { Menu, Settings, LogOut, UtensilsCrossed } from 'lucide-react-native';
+import { Menu, Settings, LogOut, UtensilsCrossed, Users } from 'lucide-react-native';
 import { theme } from '../theme';
 import Button from '../components/Button';
 
@@ -31,9 +31,15 @@ export default function DashboardScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-                <View>
-                    <Text style={styles.greeting}>Welcome,</Text>
-                    <Text style={styles.name}>Admin</Text>
+                <View style={styles.headerContent}>
+                    <Image
+                        source={require('../../assets/sanjha_chulha.jpeg')}
+                        style={styles.logo}
+                    />
+                    <View>
+                        <Text style={styles.greeting}>Welcome,</Text>
+                        <Text style={styles.name}>Admin</Text>
+                    </View>
                 </View>
                 {/* Logout disabled for no-login mode */}
             </View>
@@ -47,7 +53,13 @@ export default function DashboardScreen() {
                         description="Update items & prices"
                         icon={<UtensilsCrossed color="white" size={24} />}
                         onPress={() => navigation.navigate('Menu')}
+                    />
 
+                    <DashboardCard
+                        title="Staff Management"
+                        description="Add & remove staff"
+                        icon={<Users color="white" size={24} />}
+                        onPress={() => navigation.navigate('Staff')}
                     />
 
                     <DashboardCard
@@ -63,6 +75,7 @@ export default function DashboardScreen() {
     );
 }
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -77,6 +90,16 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.white,
         borderBottomWidth: 1,
         borderBottomColor: theme.colors.border,
+    },
+    headerContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: theme.spacing.md,
+    },
+    logo: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
     },
     greeting: {
         fontSize: theme.typography.caption.fontSize,
